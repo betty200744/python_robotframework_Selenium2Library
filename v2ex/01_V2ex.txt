@@ -1,0 +1,46 @@
+*** Settings ***
+Documentation     V2ex web test
+...     incoude login , logout,switch tab
+
+Library           Selenium2Library
+Library           BuiltIn
+
+Resource  V2ex_Variables.txt
+Resource  V2ex_Keywords.txt
+Force Tags  v2ex
+
+Suite Setup  open browser to v2ex page
+
+*** Test Cases ***
+Test Invalid Login
+    [Template]  Login With Invalid User Should Fail
+    abc     2334
+    fds     2342
+    betty@grandstream       3453
+
+Test valid Login
+    Click Main Page
+    Click Login URL
+    Input Username And Password     ${USERNAME}     ${password}
+    Click Login Button
+    [Teardown]  Logout
+
+
+Test Logout
+    [Setup]
+    Login
+    Logout
+
+
+*** Keywords ***
+Login With Invalid User Should Fail
+    [Arguments]  ${USERNAME}   ${PASSWORD}
+    Click Main Page
+    Click Login URL
+    Input Username And Password  ${USERNAME}    ${PASSWORD}
+    Click Login Button
+    element should be visible   css=div.problem li
+
+
+
+
