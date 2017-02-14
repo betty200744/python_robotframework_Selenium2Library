@@ -1,0 +1,49 @@
+*** Settings ***
+Documentation     Suite description
+Library           Selenium2Library
+Library           BuiltIn
+Library           Screenshot
+
+Resource  V2ex_Variables.txt
+Resource  V2ex_Keywords.txt
+Force Tags  myv2ex
+Suite Setup     Open Browser And Login
+Suite Teardown  Close All Browser And Logout
+
+
+
+*** Test Cases ***
+test action favorite it
+    Click Main Page
+    ${favo_number_befor_favorite}=  Get Text   css=a[href='/my/topics'] span.bigger
+    Click Item Title
+    Click Favorite It
+    ${favo_number_after_favorite}=  Get Text   css=a[href='/my/topics'] span.bigger
+    should not be equal  ${favo_number_befor_favorite}  ${favo_number_after_favorite}
+
+
+
+test action favorite node
+    Click Main Page
+    ${favo_number_befor_favorite}=  Get Text   css=a[href='/my/nodes'] span.bigger
+    Click Node
+    Click Favorite Node
+    ${favo_number_after_favorite}=  Get Text   css=a[href='/my/nodes'] span.bigger
+    should not be equal  ${favo_number_befor_favorite}  ${favo_number_after_favorite}
+
+
+*** Keywords ***
+Open Browser And Login
+    Open Browser To V2ex Page
+    click login url
+    Input Username And Password     ${USERNAME}     ${PASSWORD}
+    Click Login Button
+
+
+Close All Browser And Logout
+    Click Logout Button
+    Confirm action
+    close all browsers
+
+
+
