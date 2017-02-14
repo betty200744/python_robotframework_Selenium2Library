@@ -1,0 +1,72 @@
+*** Settings ***
+Documentation  A resource file with variables
+
+Library  Selenium2Library
+
+Resource  V2ex_Variables.txt
+
+
+*** Keywords ***
+Open Browser To V2ex Page
+    open browser    ${V2EX_URL}     browser=${BROWSER}
+
+
+Input Username And Password
+    [Arguments]  ${USERNAME}     ${PASSWORD}
+    INPUT TEXT  css=form[action='/signin'] input[type='text']   ${USERNAME}
+    input password  css=form[action='/signin'] input[type='password']   ${PASSWORD}
+
+Click Main Page
+    click element  css=a[href='/']
+
+Click Login URL
+    click element   css=a[href='/signin']
+
+Click Login Button
+    click element   css=form[action='/signin'] input[type='submit']
+
+Click Logout Button
+    click element  css=a.top[href='#;']
+
+Click Ok To Confirm Logout
+    choose ok on next confirmation
+
+Click Node
+    click element  css=a.tab_current+a
+    click element  css=div.cell>div.fr+a
+
+Click Item Title
+    click element  css=span.item_title>a
+
+Click Favorite It
+    click element  css=a[href*=favorite]
+
+Click Tweet
+    click element   xpath=//a[contains(text(), 'Tweet')]
+
+
+Click Favorite Node
+    click element  css=a[href*='favorite/node']
+
+
+Login
+    click login url
+    Input Username And Password     ${USERNAME}     ${password}
+    Click Login Button
+
+
+Logout
+    Click Logout Button
+    confirm action
+
+
+
+
+
+
+
+
+
+
+
+
