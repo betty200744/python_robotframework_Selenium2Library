@@ -1,0 +1,18 @@
+*** Settings ***
+Documentation  A resource file with variables
+
+Library  Selenium2Library
+
+*** Variables ***
+${BROWSER}  Chrome
+${V2EX_URL}     https://www.v2ex.com
+${USERNAME}     htzhao200744
+${PASSWORD}     1234qwer
+
+
+
+
+
+
+
+
