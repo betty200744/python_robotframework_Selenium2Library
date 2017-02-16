@@ -2,8 +2,10 @@
 Documentation  A resource file with variables
 
 Library  Selenium2Library
-
+Library     V2ex_Libraries.py
 Resource  V2ex_Variables.txt
+
+
 
 
 *** Keywords ***
@@ -15,6 +17,13 @@ Input Username And Password
     [Arguments]  ${USERNAME}     ${PASSWORD}
     INPUT TEXT  css=form[action='/signin'] input[type='text']   ${USERNAME}
     input password  css=form[action='/signin'] input[type='password']   ${PASSWORD}
+
+Input Summury
+    INPUT TEXT      css=textarea.msl    get_topics_title
+
+Input Content
+    INPUT TEXT  css=div.CodeMirror-scroll   get_topics_link
+
 
 Click Main Page
     click element  css=a[href='/']
@@ -47,6 +56,15 @@ Click Tweet
 
 Click Favorite Node
     click element  css=a[href*='favorite/node']
+
+Click Create topics
+    click element  css=a[href='/new']
+
+Click PublishTopic Button
+    click element  css=button[type=button]
+
+
+Select PublishTopic Node
 
 
 Login
