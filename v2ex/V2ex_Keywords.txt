@@ -18,11 +18,17 @@ Input Username And Password
     INPUT TEXT  css=form[action='/signin'] input[type='text']   ${USERNAME}
     input password  css=form[action='/signin'] input[type='password']   ${PASSWORD}
 
-Input Summury
-    INPUT TEXT      css=textarea.msl    get_topics_title
 
+Input Summury
+    ${title}    get_topics_title
+    log to console  ${title}
+    INPUT TEXT      css=textarea.msl    ${title}
+
+#TODO bug pre element cannot use INPUT TEXT
 Input Content
-    INPUT TEXT  css=div.CodeMirror-scroll   get_topics_link
+    ${comments}     get_topics_comments
+    log to console  ${comments}
+    INPUT TEXT  css=pre.CodeMirror-line   ${comments}
 
 
 Click Main Page
@@ -64,7 +70,11 @@ Click PublishTopic Button
     click element  css=button[type=button]
 
 
-Select PublishTopic Node
+Choose PublishTopic Node
+    click element  css=div.select2-container>a
+    INPUT TEXT  css=input.select2-input  python
+    click element  css=div.select2-result-label
+
 
 
 Login
