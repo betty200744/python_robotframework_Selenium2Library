@@ -1,0 +1,48 @@
+*** Settings ***
+Documentation
+
+
+Resource  V2ex_Variables.txt
+Resource  V2ex_Keywords.txt
+Suite Setup     Open Browser And Login
+Suite Teardown  Close All Browser And Logout
+
+
+
+*** Variables ***
+
+
+
+
+*** Test Cases ***
+
+create topics
+    Click Create topics
+    INPUT SUMMURY
+   # Input Content
+    Choose PublishTopic Node
+    Click PublishTopic Button
+
+
+replay_topics_all1
+
+
+replay_topics_author
+
+publish topics
+
+
+
+
+*** Keywords ***
+Open Browser And Login
+    Open Browser To V2ex Page
+    click login url
+    Input Username And Password     ${USERNAME}     ${PASSWORD}
+    Click Login Button
+
+
+Close All Browser And Logout
+    Click Logout Button
+    Confirm action
+    close all browsers
