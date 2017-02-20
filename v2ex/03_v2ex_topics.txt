@@ -4,13 +4,12 @@ Documentation
 
 Resource  V2ex_Variables.txt
 Resource  V2ex_Keywords.txt
+Resource  V2ex_Verification.txt
 Suite Setup     Open Browser And Login
 Suite Teardown  Close All Browser And Logout
 
 
-
 *** Variables ***
-
 
 
 
@@ -18,18 +17,24 @@ Suite Teardown  Close All Browser And Logout
 
 create topics
     Click Create topics
-    INPUT SUMMURY
-   # Input Content
+    ${summury}    INPUT SUMMURY
+    #Input Content
     Choose PublishTopic Node
     Click PublishTopic Button
+    Is My Topic Send
 
 
-replay_topics_all1
+
+replay_topics_all
+
+    Click Main Page
+    Click Item Title
+    ${replay_content}   Input Reply Content     "test"
+    Is Replay Send  ${replay_content}
 
 
 replay_topics_author
 
-publish topics
 
 
 
