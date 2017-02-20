@@ -1,0 +1,29 @@
+*** Settings ***
+Documentation
+
+
+Resource  V2ex_Variables.txt
+Resource  V2ex_Keywords.txt
+
+
+*** Keywords ***
+Is Replay Send
+    [Arguments]  ${title}
+    Element Should Be Visible    xpath=//a[@href='/member/htzhao200744'][@class='top']
+    Element Should Contain  xpath=//a[@href='/member/htzhao200744'][@class='top']   ${title}    message=yes
+
+Is My Nodes Change
+
+Is My Topic Change
+
+Is My Topic Send
+
+
+
+Is Login
+
+
+Is logou
+
+
+
