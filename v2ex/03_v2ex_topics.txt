@@ -26,7 +26,6 @@ create topics
 
 
 replay_topics_all
-
     Click Main Page
     Click Item Title
     ${replay_content}   Input Reply Content     "test"

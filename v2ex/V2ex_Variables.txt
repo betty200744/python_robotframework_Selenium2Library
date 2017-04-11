@@ -7,7 +7,7 @@ Library  Selenium2Library
 ${BROWSER}  Chrome
 ${V2EX_URL}     https://www.v2ex.com
 ${USERNAME}     htzhao200744
-${PASSWORD}     1234qwer
+${PASSWORD}     1q2w3e4r
 
 
 

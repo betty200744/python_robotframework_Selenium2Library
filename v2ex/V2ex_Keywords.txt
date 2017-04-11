@@ -23,12 +23,14 @@ Input Summury
     ${title}    get_topics_title
     log to console  ${title}
     INPUT TEXT      css=textarea.msl    ${title}
+    return from keyword  ${title}
 
 #TODO bug pre element cannot use INPUT TEXT
 Input Content
     ${comments}     get_topics_comments
     log to console  ${comments}
-    INPUT TEXT  css=pre.CodeMirror-line   ${comments}
+    INPUT TEXT  css=#editor   ${comments}
+
 
 
 Click Main Page
@@ -50,6 +52,7 @@ Click Node
     click element  css=a.tab_current+a
     click element  css=div.cell>div.fr+a
 
+
 Click Item Title
     click element  css=span.item_title>a
 
@@ -70,10 +73,24 @@ Click PublishTopic Button
     click element  css=button[type=button]
 
 
+Input Reply Content
+    [Arguments]     ${replay_content}
+    click element   css=textarea#reply_content  ${replay_content}
+    return from keyword  ${replay_content}
+
+Click Replay Button
+    click element   css=input[type='text']
+
+
+
+
 Choose PublishTopic Node
     click element  css=div.select2-container>a
     INPUT TEXT  css=input.select2-input  python
     click element  css=div.select2-result-label
+
+
+
 
 
 

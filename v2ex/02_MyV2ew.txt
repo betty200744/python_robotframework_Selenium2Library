@@ -13,6 +13,8 @@ Suite Teardown  Close All Browser And Logout
 
 
 *** Test Cases ***
+
+#TODO add check if the item is favorite or not , if true , favorite the next
 test action favorite it
     Click Main Page
     ${favo_number_befor_favorite}=  Get Text   css=a[href='/my/topics'] span.bigger
@@ -30,6 +32,8 @@ test action favorite node
     Click Favorite Node
     ${favo_number_after_favorite}=  Get Text   css=a[href='/my/nodes'] span.bigger
     should not be equal  ${favo_number_befor_favorite}  ${favo_number_after_favorite}
+
+
 
 
 *** Keywords ***
