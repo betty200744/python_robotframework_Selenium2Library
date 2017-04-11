@@ -1,0 +1,39 @@
+*** Settings ***
+Documentation     Suite Function:
+...               \ \ some webrtc users join meeting before host.
+Library           Selenium2Library
+Library           ScreenshotLibrary.py
+Library           Screenshot
+Library           Collections
+Library           String
+
+
+*** Variables ***
+${BROWSER}  Chrome
+${V2EX_URL}     http://www.v2ex.com/
+${V2EX_LOGO}    img/v2ex_logo.png
+${SCREENSHOT_LOGO}  ../img/screenshot.png
+
+
+
+*** Test Cases ***
+screenshot_library_test_demo
+    [Documentation]    TestCase Function:
+    ...    \ \ Some webrtc user join meeting before host
+    ...    Steps:
+    ...    1.Some webrtc users join meeting before host;
+    ...    2.Check the staus of these users.
+    open browser    ${V2EX_URL}   browser=${BROWSER}
+    click element   xpath=//*[@id="Top"]//img
+    ${x}  get horizontal position   xpath=//*[@id="Top"]//img
+    ${y}  get vertical position     xpath=//*[@id="Top"]//img
+    ${width}    ${height}   get element size  xpath=//*[@id="Top"]//img
+    ${SCREENSHOT_LOGO}  capture page screenshot  ${SCREENSHOT_LOGO}
+    crop video screenshot  ${SCREENSHOT_LOGO}   ${x}    ${y}     ${width}   ${height}
+    ${result}   screenshotCompare       ${V2EX_LOGO}     ${SCREENSHOT_LOGO}
+    should be true  ${result}
+
+
+
+
+
